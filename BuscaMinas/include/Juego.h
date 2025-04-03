@@ -14,13 +14,24 @@ private:
 	int filaAleatoria();
 	int columnaAleatoria();
 
+	//Variables para el marcador
+	int puntuacion;
+    int puntosPorMina; //Puntos perdidos al descubrir una mina
+
+    //Conteo de perdidas y victorias
+    static int victorias;
+    static int perdidas;
+
 public:
-    Juego(Tablero tablero, int cantidadMinas, int vidas = 3); //Se agrega al constructor con un valor predeterminado de 3 (3 vidas inicialmente)
+    //Se modifico el constructor para agregar la reduccion por mina
+    Juego(Tablero tablero, int cantidadMinas, int vidas, int puntosPorMina);
 	void colocarMinasAleatoriamente();
 	int solicitarFilaUsuario();
 	int solicitarColumnaUsuario();
 	bool jugadorGana();
 	void iniciar();
+
+	// Método de la portada que no está implementado en el juego.cpp
 	void dibujarPortada(string nombreArchivo);
 
 	//Integrar variables para registro de ususario
@@ -29,6 +40,11 @@ public:
 	void setUsuarioActual(const std::string& nombre);
 	std::string getUsuarioActual() const;
 	void setNombreJugador(const std::string& nombre);
+
+	//Obtener el total de perdidas y victorias
+	int obtenerVictorias();
+    int obtenerPerdidas();
+
 };
 
 #endif // JUEGO_H

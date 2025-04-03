@@ -47,6 +47,11 @@ bool Tablero::setModoDesarrollador(bool modoDesarrollador)
 {
     this->modoDesarrollador = modoDesarrollador;
 }
+//Se agrego un metodo para obtener el valor de las minas cerca en una celda
+int Tablero::getMinasCercanas(int fila, int columna)
+{
+    return minasCercanas (fila, columna);
+}
 string Tablero::getRepresentacionMina(int coordenadaX, int coordenadaY)
 {
     Celda celdaTemporal = this->contenidoTablero.at(coordenadaY).at(coordenadaX);
