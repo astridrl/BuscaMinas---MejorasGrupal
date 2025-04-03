@@ -1,7 +1,7 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 #include "Tablero.h"
-
+#include <chrono> // Agregue Biblioteca para que permite medir intervalos de tiempo con precisión.(Dulce Reyes)
 class Juego
 {
 private:
@@ -21,6 +21,9 @@ private:
     //Conteo de perdidas y victorias
     static int victorias;
     static int perdidas;
+
+    // Agregue Variables para el cronómetro (Dulce Reye)
+    std::chrono::time_point<std::chrono::steady_clock> tiempoInicio, tiempoFin;
 
 public:
     //Se modifico el constructor para agregar la reduccion por mina
