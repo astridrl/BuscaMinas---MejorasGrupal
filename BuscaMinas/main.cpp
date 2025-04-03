@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Integración de vidas (Astrid)
 int main()
 {
     const int FILASTABLERO = 5;
@@ -34,9 +35,9 @@ int main()
                 configuracionJuego.menuConfiguracion();
                 break;
             }
-        case 2:
+        case 2: //Agregué el parametro get de vidas ya que no estaba definido
             {
-              	Juego juegoTemporal(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()), configuracionJuego.getminasTablero());
+              	Juego juegoTemporal(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()), configuracionJuego.getminasTablero(), configuracionJuego.getvidasTablero()); //agregar vidas al tablero
                 juegoTemporal.iniciar();
 
                 system("pause");
