@@ -30,6 +30,8 @@ public:
 	int solicitarColumnaUsuario();
 	bool jugadorGana();
 	void iniciar();
+
+	// Método de la portada que no está implementado en el juego.cpp
 	void dibujarPortada(string nombreArchivo);
 
 	//Integrar variables para registro de ususario
@@ -42,6 +44,7 @@ public:
 	//Obtener el total de perdidas y victorias
 	int obtenerVictorias();
     int obtenerPerdidas();
+
 };
 
 #endif // JUEGO_H

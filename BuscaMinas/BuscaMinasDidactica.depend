@@ -259,12 +259,12 @@
 
 1742568096 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\celda.h
 
-1742568096 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\tablero.cpp
+1743670963 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\tablero.cpp
 	"Tablero.h"
 	<sstream>
 	<iostream>
 
-1742568096 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\tablero.h
+1743670963 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\tablero.h
 	<iostream>
 	<vector>
 	"Celda.h"

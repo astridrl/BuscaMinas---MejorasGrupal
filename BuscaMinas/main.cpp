@@ -19,6 +19,10 @@ int main()
     //Se agregaron las configuraciones de los puntos por celda y de la recuccion de puntos en el constructor Juego
     Juego juego(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()),
                 configuracionJuego.getminasTablero(), configuracionJuego.getvidasTablero(),configuracionJuego.getReduccionPuntos());
+
+    //Mostrar la portada al inicio del programa
+    juego.dibujarPortada("portada.txt");
+
     srand(getpid());
     int opciones;
     bool repetir = true;

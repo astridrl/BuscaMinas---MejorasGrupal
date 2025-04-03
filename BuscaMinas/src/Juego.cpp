@@ -100,17 +100,17 @@ int Juego::aleatorio_en_rango(int minimo, int maximo)
 
 			    if (this -> vidas <= 0) //cuando no queden vidas
                 {
-                cout <<"¡Te has quedado sin vidas! Perdiste el juego" << endl;
+                cout <<" Te has quedado sin vidas! Perdiste el juego" << endl;
 
 			    this->puntuacion -= this->puntosPorMina;//Resta los puntos por mina encontrada
 
-			    cout << "\n¡Has descubierto una mina!"<< endl << endl;
+			    cout << "\n Has descubierto una mina!"<< endl << endl;
 			    cout <<  "--Pierdes: " << this->puntosPorMina << " puntos" << endl;//Muestra los puntos perdidos
 
 			    if (this -> vidas <= 0) //cuando no queden vidas
                 {
                 this->perdidas++; //Suma las perdidas
-                cout <<"\n¡Te has quedado sin vidas! Perdiste el juego" << endl;
+                cout <<"\n Te has quedado sin vidas! Perdiste el juego" << endl;
 
                 cout << "\nPuntuacion final: " << this->puntuacion << endl;//Muestra la puntuacion final
 
@@ -135,15 +135,15 @@ int Juego::aleatorio_en_rango(int minimo, int maximo)
 			if (this->jugadorGana())
 			{
 			    this->victorias++; //Suma las victorias
-				cout << "¡Ganaste el Juego!" << endl;
-				cout << "\Puntuación final: " << this->puntuacion << endl<< endl;
+				cout << " Ganaste el Juego!" << endl;
+				cout << "\Puntuaci n final: " << this->puntuacion << endl<< endl;
 				this->tablero.setModoDesarrollador(true);
 				this->tablero.imprimir();
 				break;
 			}
 			else //si aun quedan vidas
             {
-                cout << "¡Has descubierto una mina! Te quedan " << this->vidas << " vidas" << endl;
+                cout << " Has descubierto una mina! Te quedan " << this->vidas << " vidas" << endl;
                 system("pause");
                 continue; //continuar el juego
             }
@@ -151,7 +151,7 @@ int Juego::aleatorio_en_rango(int minimo, int maximo)
 
 			if (this->jugadorGana())
 			{
-				cout << "¡Ganaste el Juego!" << endl;
+				cout << " Ganaste el Juego!" << endl;
 				this->tablero.setModoDesarrollador(true);
 				this->tablero.imprimir();
 				break;
@@ -183,3 +183,28 @@ int Juego::obtenerVictorias() {
 int Juego::obtenerPerdidas() {
     return this->perdidas;
 }
+
+
+//implement  el metodo dibujarportada() que estaba en el juego.h pero no se implementaba aqu  (Astrid)
+	void Juego::dibujarPortada (string nombreArchivo){
+	    //se crea un objeto ifstream llamado archivo, y se asocia con el archivo (parametro)
+        ifstream archivo(nombreArchivo); //ifstream es una clase que permite leer datos de un archivo
+        string linea; //almacena cada linea le da del archivo
+
+        //verificar si se abri  el archivo
+    if (archivo.is_open()) {
+
+            //leer el archivo linea por linea hasta llegar al final
+        while (getline(archivo, linea)) { // el getline() extrae una linea del archivo y la almecena en la variable linea
+            cout << linea << endl; //muestra cada l nea leida
+        }
+    //cerrar el archivo despues d leerlo
+        archivo.close();
+    } else {
+        cout << "El archivo de portada no se pudo abrir" << endl; //por si no se puede abrir el archivo
+        cout << " Bienvenidos al buscaminas!" << endl;
+    }
+
+        //el usuario debe presionar una tecla
+        cin.get(); //el cin.get lee un caracter del teclado, tambien enter
+	}

@@ -96,26 +96,100 @@ int Config::getfilasTablero()
 {
     return this->filasTablero;
 }
+
+// Método para establecer el número de filas con validación de límites
 int Config::setfilasTablero(int filasTablero)
 {
-    this->filasTablero=filasTablero;
+    //Constantes para los límites de tamaño del tablero
+    const int MIN_FILAS = 2;  // Valor mínimo
+    const int MAX_FILAS = 10; // Valor máximo
+
+    // Validar el valor ingresado
+    if (filasTablero < MIN_FILAS) {
+        // Si el valor es menor al mínimo, establecí el valor mínimo
+        cout << "Valor demasiado pequeño. Se establecera el minimo de " << MIN_FILAS << " filas." << endl;
+        this->filasTablero = MIN_FILAS;
+        return MIN_FILAS; // Retornamos el valor
+    }
+    else if (filasTablero > MAX_FILAS) {
+        // Si el valor es mayor al máximo, establecer el valor máximo
+        cout << "Valor demasiado grande. Se establecera el maximo de " << MAX_FILAS << " filas." << endl;
+        this->filasTablero = MAX_FILAS;
+        return MAX_FILAS;
+    }
+    else {
+        // Si el valor está dentro de los límites,se establece
+        this->filasTablero = filasTablero;
+        return filasTablero; // Retornamos el mismo valor que se recibió
+    }
 }
+
 int Config::getcolumnasTablero()
 {
     return this->columnasTablero;
 }
+
+// Método para establecer el número de columnas con validación de límites
 int Config::setcolumnasTablero(int columnasTablero)
 {
-    this->columnasTablero=columnasTablero;
+    //Constantes para los límites de tamaño del tablero
+    const int MIN_COLUMNAS = 2;  // Valor mínimo
+    const int MAX_COLUMNAS = 10; // Valor máximo
+
+    // Validar valor
+    if (columnasTablero < MIN_COLUMNAS) {
+        // Si el valor es menor al mínimo, establer el valor mínimo
+        cout << "Valor demasiado pequeño. Se establecera el minimo de " << MIN_COLUMNAS << " columnas." << endl;
+        this->columnasTablero = MIN_COLUMNAS;
+        return MIN_COLUMNAS;
+    }
+    else if (columnasTablero > MAX_COLUMNAS) {
+        // Si el valor es mayor al máximo, establecer el valor máximo
+        cout << "Valor demasiado grande. Se establecera el maximo de " << MAX_COLUMNAS << " columnas." << endl;
+        this->columnasTablero = MAX_COLUMNAS;
+        return MAX_COLUMNAS;
+    }
+    else {
+        // Si el valor está dentro de los límites, se establece
+        this->columnasTablero = columnasTablero;
+        return columnasTablero;
+    }
 }
+
 int Config::getminasTablero()
 {
     return this->minasTablero;
 }
+
+// Método para establecer el número de minas con validación basada en el tamaño del tablero
 int Config::setminasTablero(int minasTablero)
 {
-    this->minasTablero=minasTablero;
+    // Calculamos el área total del tablero (filas × columnas)
+    int areaTablero = this->filasTablero * this->columnasTablero;
+
+    //límites para la cantidad de minas
+    const int MIN_MINAS = 1; // al menos una mina para que el juego tenga sentido
+    //minas a 10% del área total
+    const int MAX_MINAS = static_cast<int>(areaTablero * 0.1);
+
+    // Validar valor
+    if (minasTablero < MIN_MINAS) {
+        // Si el valor es menor al mínimo, establecer el valor mínimo
+        cout << "Debe haber al menos " << MIN_MINAS << " mina en el tablero." << endl;
+        this->minasTablero = MIN_MINAS;
+        return MIN_MINAS;
+    }
+    else if (minasTablero > MAX_MINAS) {
+        // Si el valor es mayor al máximo, establecer el valor máximo
+        cout << "Demasiadas minas para el tablero. Se establecera el maximo de " << MAX_MINAS << " minas." << endl;
+        this->minasTablero = MAX_MINAS;
+        return MAX_MINAS;
+    }else {
+        this->minasTablero = minasTablero;
+        return minasTablero;
+    }
 }
+
 bool Config::getmodoDesarrolladorTablero()
 {
     return this->modoDesarrolladorTablero;
@@ -128,9 +202,42 @@ int Config::getvidasTablero()
 {
     return this->vidasTablero;
 }
+
 int Config::setvidasTablero(int vidasTablero)
 {
-    this->vidasTablero=vidasTablero;
+    // Definir límites para las vidas
+    const int MIN_VIDAS = 1;  // Al menos debe tener 1 vida
+    const int MAX_VIDAS = 10; //
+
+    // Validar el valor
+    if (vidasTablero < MIN_VIDAS) {
+        cout << "El número de vidas no puede ser menor a " << MIN_VIDAS << ". Se usará el valor mínimo." << endl;
+        this->vidasTablero = MIN_VIDAS;
+    } else if (vidasTablero > MAX_VIDAS) {
+        cout << "El número de vidas no puede ser mayor a " << MAX_VIDAS << ". Se usará el valor máximo." << endl;
+        this->vidasTablero = MAX_VIDAS;
+    } else {
+        this->vidasTablero = vidasTablero;
+    }
+
+    return this->vidasTablero;
+}
+
+
+//Se agrege garon los metodos para la reduccion y los puntos por celda (Britany)
+//Metodos para la reduccion en caso de mina
+int Config::getReduccionPuntos()
+{
+    return this->reduccionPuntos;
+}
+void Config::setReduccionPuntos(int reduccionPuntos)
+{
+    //Verificador para establecer un minimo y maximo de puntos reducidos
+    if (reduccionPuntos < 0 || reduccionPuntos > 50){
+        cout << "\n\t\tLos numeros estalbecidos estan fuera del rango...\n";
+        reduccionPuntos= 3;
+    }
+    this->reduccionPuntos=reduccionPuntos;
 }
 //Se agrege garon los metodos para la reduccion y los puntos por celda (Britany)
 //Metodos para la reduccion en caso de mina
