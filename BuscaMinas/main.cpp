@@ -36,9 +36,25 @@ int main()
                 break;
             }
         case 2: //Agregué el parametro get de vidas ya que no estaba definido
+                //Agregué el registro del usuario
             {
+                string nombre;
+                cout << "\t\tIngrese su nombre de usuario: ";
+                cin.ignore();
+                getline(cin, nombre);
+
+                if (nombre.empty()) {
+                    nombre = "Invitado";
+                }
+                juego.setUsuarioActual(nombre);
+
+
               	Juego juegoTemporal(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()), configuracionJuego.getminasTablero(), configuracionJuego.getvidasTablero()); //agregar vidas al tablero
+                juegoTemporal.setUsuarioActual(nombre);
                 juegoTemporal.iniciar();
+
+                string resultado = juegoTemporal.jugadorGana() ? "Ganaste" : "Perdiste";
+                cout << "\n\t\t" << nombre << ", " << resultado << " el Juego!\n";
 
                 system("pause");
                 break;

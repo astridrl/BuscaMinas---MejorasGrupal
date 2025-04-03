@@ -108,3 +108,20 @@ int Juego::aleatorio_en_rango(int minimo, int maximo)
 			}
 		}
 	}
+
+	//Implementacion de registro de usuario
+	bool Juego::registrarUsuario(const std::string& nombre) {
+    if (nombre.empty()) {
+        return false;
+    }
+    usuarioActual = nombre;
+    return true;
+    }
+
+    void Juego::setUsuarioActual(const std::string& nombre) {
+        this->usuarioActual = nombre;
+    }
+
+    std::string Juego::getUsuarioActual() const {
+        return usuarioActual;
+    }
