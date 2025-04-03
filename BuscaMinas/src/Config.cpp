@@ -223,22 +223,6 @@ int Config::setvidasTablero(int vidasTablero)
     return this->vidasTablero;
 }
 
-
-//Se agrege garon los metodos para la reduccion y los puntos por celda (Britany)
-//Metodos para la reduccion en caso de mina
-int Config::getReduccionPuntos()
-{
-    return this->reduccionPuntos;
-}
-void Config::setReduccionPuntos(int reduccionPuntos)
-{
-    //Verificador para establecer un minimo y maximo de puntos reducidos
-    if (reduccionPuntos < 0 || reduccionPuntos > 50){
-        cout << "\n\t\tLos numeros estalbecidos estan fuera del rango...\n";
-        reduccionPuntos= 3;
-    }
-    this->reduccionPuntos=reduccionPuntos;
-}
 //Se agrege garon los metodos para la reduccion y los puntos por celda (Britany)
 //Metodos para la reduccion en caso de mina
 int Config::getReduccionPuntos()
