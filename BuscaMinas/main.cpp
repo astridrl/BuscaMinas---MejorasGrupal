@@ -13,8 +13,16 @@ int main()
     const int MINASENTABLERO = 3;
     const bool MODODESARROLLADOR = true;
     const int VIDASTABLERO = 3;
-    Config configuracionJuego(FILASTABLERO, COLUMNASTABLERO, MINASENTABLERO, MODODESARROLLADOR, VIDASTABLERO);
-    Juego juego(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()), configuracionJuego.getminasTablero());
+    //Valores predeterminados la reduccion, tambien agragados al constructor de Config (Britany)
+    const int REDUCCIONPUNTOS= 3;
+    Config configuracionJuego(FILASTABLERO, COLUMNASTABLERO, MINASENTABLERO, MODODESARROLLADOR, VIDASTABLERO, REDUCCIONPUNTOS);
+    //Se agregaron las configuraciones de los puntos por celda y de la recuccion de puntos en el constructor Juego
+    Juego juego(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()),
+                configuracionJuego.getminasTablero(), configuracionJuego.getvidasTablero(),configuracionJuego.getReduccionPuntos());
+
+    //Mostrar la portada al inicio del programa
+    juego.dibujarPortada("portada.txt");
+
     srand(getpid());
     int opciones;
     bool repetir = true;
@@ -36,9 +44,31 @@ int main()
                 break;
             }
         case 2: //Agregué el parametro get de vidas ya que no estaba definido
+                //Agregué el registro del usuario
             {
-              	Juego juegoTemporal(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()), configuracionJuego.getminasTablero(), configuracionJuego.getvidasTablero()); //agregar vidas al tablero
+                string nombre;
+                cout << "\t\tIngrese su nombre de usuario: ";
+                cin.ignore();
+                getline(cin, nombre);
+
+                if (nombre.empty()) {
+                    nombre = "Invitado";
+                }
+                juego.setUsuarioActual(nombre);
+
+                //Agrege los puntos por celda y la reduccion de puntos
+              	Juego juegoTemporal(Tablero(configuracionJuego.getfilasTablero(), configuracionJuego.getcolumnasTablero(), configuracionJuego.getmodoDesarrolladorTablero()),
+                                    configuracionJuego.getminasTablero(), configuracionJuego.getvidasTablero(),configuracionJuego.getReduccionPuntos());
+
+                juegoTemporal.setUsuarioActual(nombre);
                 juegoTemporal.iniciar();
+
+                string resultado = juegoTemporal.jugadorGana() ? "Ganaste" : "Perdiste";
+                cout << "\n\t" << nombre << ", " << resultado << " el Juego!\n";
+
+                //Total  de jurgos ganados y perdidos
+                cout << "\n\tTotal de juegos ganados: " << juego.obtenerVictorias() << endl;
+                cout << "\tTotal de juegos perdidos: " << juego.obtenerPerdidas() << endl << endl;
 
                 system("pause");
                 break;

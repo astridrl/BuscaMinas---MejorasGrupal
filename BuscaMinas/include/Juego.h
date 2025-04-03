@@ -19,7 +19,7 @@ public:
 	int solicitarColumnaUsuario();
 	bool jugadorGana();
 	void iniciar();
-	void dibujarPortada(string nombreArchivo);
+	void dibujarPortada(string nombreArchivo); //metodo de la portada que no está implementado en el juego.cpp
 };
 
 #endif // JUEGO_H
