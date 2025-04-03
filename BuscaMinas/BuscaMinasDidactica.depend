@@ -247,11 +247,12 @@
 	<sstream>
 	<iostream>
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> MejoraUsuario_Dulce
+1742568096 D
+
+1742568096 ated upstream
+
+1743644196 oraUsuario_Dulce
+
 1742568096 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\celda.cpp
 	"Celda.h"
 	<iostream>
@@ -268,8 +269,6 @@
 	<vector>
 	"Celda.h"
 
-<<<<<<< HEAD
-=======
 1743637599 source:c:\users\miais\documents\programacion\programacion i\buscaminas---mejorasgrupal\buscaminas\src\celda.cpp
 	"Celda.h"
 	<iostream>
@@ -307,5 +306,26 @@
 	<fstream>
 	<unistd.h>
 
->>>>>>> Stashed changes
->>>>>>> MejoraUsuario_Dulce
+1743644196 shed changes
+
+1742572097 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\config.cpp
+	<iostream>
+	<unistd.h>
+	"Config.h"
+
+1742572096 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\config.h
+
+1743648423 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\main.cpp
+	<iostream>
+	<unistd.h>
+	"Juego.h"
+	"Config.h"
+
+1743648423 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\juego.h
+	"Tablero.h"
+
+1743648423 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\juego.cpp
+	"Juego.h"
+	<fstream>
+	<unistd.h>
+
