@@ -26,6 +26,10 @@ class Tablero
         bool descubrirMina(int x, int y);
         int contarCeldasSinMinasYSinDescubrir();
 
+        //Se agrego un metodo para el valor de la celda
+        int getMinasCercanas(int fila, int columna);
+
+
     protected:
 
     private:
