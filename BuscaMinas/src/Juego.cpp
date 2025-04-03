@@ -17,10 +17,11 @@ int Juego::aleatorio_en_rango(int minimo, int maximo)
 		return this->aleatorio_en_rango(0, this->tablero.getAnchoTablero() - 1);
 	}
 
-	Juego::Juego(Tablero tablero, int cantidadMinas)
+	Juego::Juego(Tablero tablero, int cantidadMinas, int vidas) //inicializar las vidas en el constructor
 	{
 		this->tablero = tablero;
 		this->cantidadMinas = cantidadMinas;
+		this->vidas = vidas; //puntero para guardar las vidas
 		this->colocarMinasAleatoriamente();
 	}
 
@@ -68,29 +69,59 @@ int Juego::aleatorio_en_rango(int minimo, int maximo)
 		}
 	}
 
+    //mejora de vidas (Astrid)
 	void Juego::iniciar()
 	{
 		int fila, columna;
 		while (true)
 		{
 			this->tablero.imprimir();
+			cout << "Te quedan: " << this->vidas << " vidas" << endl;
 			fila = this->solicitarFilaUsuario();
 			columna = this->solicitarColumnaUsuario();
 			bool respuestaAUsuario = this->tablero.descubrirMina(columna, fila);
-			if (!respuestaAUsuario)
+			if (!respuestaAUsuario) //si descrubre una mina
 			{
-				cout << "Perdiste el Juego\n";
+			    this->vidas--; //reducir una vida
+
+			    if (this -> vidas <= 0) //cuando no queden vidas
+                {
+                cout <<"¡Te has quedado sin vidas! Perdiste el juego" << endl;
 				this->tablero.setModoDesarrollador(true);
 				this->tablero.imprimir();
 				break;
 			}
+			else //si aun quedan vidas
+            {
+                cout << "¡Has descubierto una mina! Te quedan " << this->vidas << " vidas" << endl;
+                system("pause");
+                continue; //continuar el juego
+            }
+			}
 
 			if (this->jugadorGana())
 			{
-				cout << "Ganaste el Juego\n";
+				cout << "¡Ganaste el Juego!" << endl;
 				this->tablero.setModoDesarrollador(true);
 				this->tablero.imprimir();
 				break;
 			}
 		}
 	}
+
+	//Implementacion de registro de usuario
+	bool Juego::registrarUsuario(const std::string& nombre) {
+    if (nombre.empty()) {
+        return false;
+    }
+    usuarioActual = nombre;
+    return true;
+    }
+
+    void Juego::setUsuarioActual(const std::string& nombre) {
+        this->usuarioActual = nombre;
+    }
+
+    std::string Juego::getUsuarioActual() const {
+        return usuarioActual;
+    }
