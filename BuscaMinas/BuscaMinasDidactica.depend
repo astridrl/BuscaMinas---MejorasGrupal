@@ -348,7 +348,7 @@
 	"Juego.h"
 	"Config.h"
 
-1743694495 c:\programacion 1\progra\buscaminas---mejorasgrupal\buscaminas\include\juego.h
+1743695407 c:\programacion 1\progra\buscaminas---mejorasgrupal\buscaminas\include\juego.h
 	"Tablero.h"
 	<chrono>
 
@@ -374,4 +374,10 @@
 	"Tablero.h"
 	<sstream>
 	<iostream>
+
+1743695407 source:c:\programacion 1\progra\buscaminas---mejorasgrupal\buscaminas\src\juego.cpp
+	"Juego.h"
+	<fstream>
+	<unistd.h>
+	<chrono>
 
