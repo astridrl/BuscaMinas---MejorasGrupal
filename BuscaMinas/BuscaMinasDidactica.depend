@@ -387,15 +387,20 @@
 	"Juego.h"
 	"Config.h"
 
-1743698714 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\juego.h
+1743723838 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\juego.h
 	"Tablero.h"
 	<chrono>
 
 1743705072 c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\include\config.h
 
-1743698714 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\juego.cpp
+1743726237 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\juego.cpp
 	"Juego.h"
 	<fstream>
 	<unistd.h>
 	<chrono>
+
+1743705098 source:c:\users\astri\onedrive\documentos\programación i\buscaminas---mejorasgrupal\buscaminas\src\config.cpp
+	<iostream>
+	<unistd.h>
+	"Config.h"
 

@@ -95,15 +95,19 @@ void Juego::iniciar()
             this->vidas--;
             if (this->vidas <= 0)
             {
+                this->perdidas++; //Suma las perdidas
                 cout << "\n Te has quedado sin vidas! Perdiste el juego" << endl;
                 cout << "\nPuntuacion final: " << this->puntuacion << endl;
+                auto tiempoFinal = std::chrono::steady_clock::now();
+                std::chrono::duration<double> tiempoTotal = tiempoFinal - tiempoInicio;
+                std::cout << "Tiempo total de juego: " << tiempoTotal.count() << " segundos." << std::endl; // MOSTRAR TIEMPO FINAL
                 this->tablero.setModoDesarrollador(true);
                 this->tablero.imprimir();
                 break;
             }
             else
             {
-                cout << "--Te quedan " << this->vidas << " vidas\n" << endl;
+                cout << "!Has descubierto una mina! Te quedan " << this->vidas << " vidas\n" << endl;
                 system("pause");
                 continue;
             }
@@ -117,8 +121,12 @@ void Juego::iniciar()
 
         if (this->jugadorGana())
         {
+            this->victorias++; //Suma las victorias
             cout << " Ganaste el Juego!" << endl;
             cout << "\nPuntuación final: " << this->puntuacion << endl;
+            auto tiempoFinal = std::chrono::steady_clock::now();
+            std::chrono::duration<double> tiempoTotal = tiempoFinal - tiempoInicio;
+            std::cout << "Tiempo total de juego: " << tiempoTotal.count() << " segundos." << std::endl; // MOSTRAR TIEMPO FINAL
             this->tablero.setModoDesarrollador(true);
             this->tablero.imprimir();
             break;
@@ -161,20 +169,20 @@ int Juego::obtenerPerdidas()
 // Implementé el método dibujarPortada() que estaba en el juego.h pero no se implementaba aquí (Astrid)
 void Juego::dibujarPortada(string nombreArchivo)
 {
-    ifstream archivo(nombreArchivo);
-    string linea;
-    if (archivo.is_open())
+    ifstream archivo(nombreArchivo); //ifstream clase que permite leer datos de archivos
+    string linea; //variable linea
+    if (archivo.is_open()) //verifica si el archivo se abrió correctamente
     {
-        while (getline(archivo, linea))
+        while (getline(archivo, linea)) //lee el texto linea por linea hasta llegar al final
         {
-            cout << linea << endl;
+            cout << linea << endl; //muestra cada linea leida en la consola
         }
-        archivo.close();
+        archivo.close(); //cierra el archivo despues de leerlo
     }
     else
     {
         cout << "El archivo de portada no se pudo abrir" << endl;
         cout << " Bienvenidos al buscaminas!" << endl;
     }
-    cin.get();
+    cin.get(); //lee un solo caracter y el enter
 }
